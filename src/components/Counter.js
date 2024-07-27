@@ -1,4 +1,6 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, connect } from 'react-redux';
+
+import { Component } from 'react';
 
 import classes from './Counter.module.css';
 
@@ -27,5 +29,27 @@ const Counter = () => {
     </main>
   );
 };
+
+class CounterClass extends Component {
+  // you can't use hooks in class based components
+  incrementHandler() {}
+
+  decrementHandler() {}
+
+  toggleCounterHandler() {}
+  render() {
+    return (
+      <main className={classes.counter}>
+        <h1>Redux Counter</h1>
+        <div className={classes.value}>{counter}</div>
+        <div>
+          <button onClick={this.incrementHandler}>Increment</button>
+          <button onClick={this.decrementHandler}>Decrement</button>
+        </div>
+        <button onClick={this.toggleCounterHandler}>Toggle Counter</button>
+      </main>
+    );
+  }
+}
 
 export default Counter;
